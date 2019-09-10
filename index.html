@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <main></main>
+    <template>
+        <article class="">
+            <img src="" alt="">
+            <h2>Navn</h2>
+            <p>Rating</p>
+        </article>
+    </template>
+   
+    <script>
+        document.addEventListener("DOMContentLoaded", GetJson);
+        
+        comicID [];
+        const gridContent=document.querySelector("main");
+
+        async function GetJson() 
+        {
+            const jsonData = await fetch("https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json");
+            comicID=await jsonData.json();
+            ShowComics();
+        }
+        function ShowComics()
+        {
+            gridContent.innerHTML="";
+            let temp=document.querySelector("template");
+            comicID.feed.entry.forEach(comic => {
+                let clone=temp.cloneNode(true).content;
+                clone.querySelector("img").src="";
+                clone.querySelector("img").alt="";
+                clone.querySelector("h2").textContent="";
+                clone.querySelector("p").textContent="";
+                gridContent.appendChild(clone);
+            })
+        }
+    </script>
+</body>
+</html>
