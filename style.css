@@ -1,8 +1,10 @@
 img {
     width: 100%;
 }
-nav {
+nav #tagList {
     padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 main {
@@ -35,5 +37,8 @@ article:hover {
 {
     main {
         grid-template-columns: repeat(6, 1fr);
+    }
+    nav #tagList {
+        grid-template-columns: repeat(4, 1fr);
     }
 }

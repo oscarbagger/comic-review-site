@@ -8,7 +8,8 @@
 </head>
 <body>
    <nav>
-       <input id="searchBar" type="text" placeholder=" Search by title">
+        <input id="searchBar" type="text" placeholder=" Search by title">
+        <div id="tagList"></div>
    </nav>
 
     <main>
@@ -23,8 +24,10 @@
         </article>
     </template>
     <template class="tagTemp">
-        <input type="checkbox">
-        <label></label>
+       <div class="tagBox">
+           <input type="checkbox">
+           <label></label>
+       </div>
     </template>
     <script src="script.js"></script>
 </body>
