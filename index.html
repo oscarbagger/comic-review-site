@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
     <title>Document</title>
 </head>
 <body>
-    <main></main>
+    <main>
+        <img id="testImg" src="";>
+    </main>
     <template>
         <article class="">
             <img src="" alt="">
@@ -15,15 +18,35 @@
     </template>
    
     <script>
-        document.addEventListener("DOMContentLoaded", GetJson);
+        document.addEventListener("DOMContentLoaded", ConnectToApi);
         
-        comicID [];
+        let comicID =[];
         const gridContent=document.querySelector("main");
+        let isbn=9781612624204;
+
+        async function ConnectToApi()
+        {
+            var request = new XMLHttpRequest();
+
+            request.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=isbn:'+isbn, true);
+            request.onload = function() {
+                // Begin accessing JSON data here
+                var Apidata = JSON.parse(this.response);
+
+                console.log(Apidata.items[0].volumeInfo);
+                document.querySelector("#testImg").src=Apidata.items[0].volumeInfo.imageLinks.thumbnail;
+            }
+
+            request.send();
+        }
 
         async function GetJson() 
-        {
+        {   
+            
             const jsonData = await fetch("https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json");
             comicID=await jsonData.json();
+            
+
             ShowComics();
         }
         function ShowComics()
