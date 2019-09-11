@@ -1,0 +1,39 @@
+img {
+    width: 100%;
+}
+nav {
+    padding: 10px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+article {
+    margin: 0;
+    border: 2px solid grey;
+} 
+.rating {
+    text-align: center;
+}
+
+article:hover {
+    outline: 4px solid grey;
+    cursor: pointer;
+}
+
+@media screen and (min-width:600px)
+{
+    main {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media screen and (min-width:1000px)
+{
+    main {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}

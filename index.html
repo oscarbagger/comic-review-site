@@ -1,123 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Comic Review log</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<style>
-        img {
-            width: 100%;
-        }
-        
-        main {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 10px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        article {
-            margin: 0;
-            padding: 10px;
-            border: 2px solid grey;
-        }  
-            @media screen and (min-width:1000px)
-        {
-            main {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-</style>
 <body>
-   
-    <input id="searchBar" type="text" placeholder="search by name">
-    
+   <nav>
+       <input id="searchBar" type="text" placeholder=" Search by title">
+   </nav>
+
     <main>
         <img id="testImg" src="";>
     </main>
-    <template>
-        <article class="">
+    
+    <template class="comicTemp">
+        <article class="comicPanel">
             <img src="" alt="">
-            <h2>Navn</h2>
-            <p>Rating</p>
+            <h2 class="title"></h2>
+            <p class="rating"></p>
         </article>
     </template>
-   
-    <script>
-        document.addEventListener("DOMContentLoaded", Start);
-        
-        
-        let comicID =[];
-        const gridContent=document.querySelector("main");
-        const searchBar=document.querySelector("#searchBar");
-        let searchInput="";
-        let isbn=9781612624204;
-
-        async function ConnectToApi()
-        {
-            var request = new XMLHttpRequest();
-
-            request.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=isbn:'+isbn, true);
-            request.onload = function() {
-                // Begin accessing JSON data here
-                var apiData = JSON.parse(this.response);
-
-                console.log(apiData.items[0].volumeInfo);
-                document.querySelector("#testImg").src=apiData.items[0].volumeInfo.imageLinks.thumbnail;
-            }
-
-            request.send();
-        }
-        
-        function Start()
-        {
-            GetJson();
-            searchBar.addEventListener("input", ShowComics);
-        }
-
-        async function GetJson() 
-        {   
-            
-            const jsonData = await fetch("https://spreadsheets.google.com/feeds/list/1dg4qc964KOePUreY2UuREoemOWD7RGVbWd1le-WqfxI/od6/public/values?alt=json");
-            comicID=await jsonData.json();
-
-            SortByName();
-            ShowComics();
-        }
-        function SortByName()
-        {
-            // sorts the array alphabetically by book title 
-            comicID.feed.entry.sort(function(a, b){
-                // first make the strings lowercase and remove all whitespace with replace
-                var firstString=a.gsx$title.$t.toLowerCase().replace(/ /g,"");
-                var secondString=b.gsx$title.$t.toLowerCase().replace(/ /g, "");
-                // sort the strings
-                if(firstString < secondString) { return -1; }
-                if(firstString > secondString) { return 1; }
-                return 0;
-            })
-        }
-        function ShowComics()
-        {
-            searchInput=searchBar.value.toLowerCase();
-            gridContent.innerHTML="";
-            let temp=document.querySelector("template");
-            comicID.feed.entry.forEach(comic => {
-                // modify string to be lowercase and therby easier to search for
-                var comicTitle=comic.gsx$title.$t.toLowerCase();
-                // check if string includes what is in the searchbar
-                if (comicTitle.includes(searchInput))
-                    {
-                        let clone=temp.cloneNode(true).content;
-                        clone.querySelector("img").src="";
-                        clone.querySelector("img").alt=comic.gsx$title.$t;
-                        clone.querySelector("h2").textContent=comic.gsx$title.$t;
-                        clone.querySelector("p").textContent=comic.gsx$rating.$t+"/10";
-                        gridContent.appendChild(clone);
-                    }
-            })
-        }
-    </script>
+    <template class="tagTemp">
+        <input type="checkbox">
+        <label></label>
+    </template>
+    <script src="script.js"></script>
 </body>
 </html>
