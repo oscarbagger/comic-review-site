@@ -3,24 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <style>
-        </style>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <main>
+        <nav>
             <button class="luk">Tilbage</button>
+        </nav>
+        <section class="singleComic">
+            <h2 class="title"></h2>
             <article class="myComic">
-                <h2 class="title"></h2>
-                <img src="" alt="">
-                <p class="rating"></p>
-                <p class="author"></p>
-                <p class="review"></p>
-                <p class="pro"></p>
-                <p class="con"></p>
-                <a class="tag"></a>
+                <div>                
+                    <img src="" alt="">
+                    <p class="rating"></p>
+                    <p class="author"></p>
+                </div>
+                <div>
+                    <p class="review"></p>
+                    <p class="pro"></p>
+                    <p class="con"></p>
+                    <a class="tag"></a>
+                </div>
             </article>
 
-        </main>
+        </section>
         <script>
             document.addEventListener("DOMContentLoaded", HentJson);
             
@@ -46,7 +51,7 @@
                     {
                         document.querySelector(".myComic img").src=c.gsx$img.$t;
                         document.querySelector(".myComic img").alt=c.gsx$title.$t;
-                        document.querySelector(".myComic .title").textContent=c.gsx$title.$t;
+                        document.querySelector(".title").textContent=c.gsx$title.$t;
                         document.querySelector(".myComic .rating").textContent=c.gsx$rating.$t+"/10";
                         document.querySelector(".myComic .author").textContent="Author: "+c.gsx$author.$t;
                         document.querySelector(".myComic .review").textContent=c.gsx$review.$t;

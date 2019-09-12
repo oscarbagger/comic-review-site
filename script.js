@@ -55,7 +55,6 @@ function ShowComics()
             let clone=temp.cloneNode(true).content;
             clone.querySelector("img").src=comic.gsx$img.$t;
             clone.querySelector("img").alt=comic.gsx$title.$t;
-            //clone.querySelector("h2").textContent=comic.gsx$title.$t;
             clone.querySelector("p").textContent=comic.gsx$rating.$t+"/10";
             gridContent.appendChild(clone);
             gridContent.lastElementChild.addEventListener("click",() => {

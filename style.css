@@ -1,10 +1,17 @@
+body {
+    background-color: #E9EAE2;
+}
+
 img {
     width: 100%;
 }
+
+/* Front Page */ 
 nav #tagList {
     padding: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    padding-bottom: 5vh;
 }
 #tagList label {
     text-transform: capitalize;
@@ -17,15 +24,55 @@ main {
     max-width: 1200px;
     margin: 0 auto;
 }
-article {
+.comicPanel {
     margin: 0;
-    border: 2px solid grey;
+    background-color: #D7C6AF; 
+    border-radius: 3px;
+    border: 1px solid grey;
+    animation: coverIn 0.6s ease-out both;
 } 
 .rating {
     text-align: center;
 }
 
-article:hover {
-    outline: 4px solid grey;
+@keyframes coverIn {
+    0% {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.comicPanel:hover {
+    /* outline: 4px solid #D7C6AF; */ 
     cursor: pointer;
+    box-shadow: 10px 10px 5px grey;
+}
+
+/* Single View */ 
+
+.myComic {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.myComic div {
+    padding: 20px;
+}
+.singleComic {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*  */ 
+
+@media screen and (min-width:1000px) {
+    .myComic {
+        grid-template-columns: 1fr 2fr;
+    }
 }
