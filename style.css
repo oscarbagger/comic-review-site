@@ -1,78 +1,98 @@
 body {
-    background-color: #E9EAE2;
+	background-color: #E9EAE2;
 }
 
 img {
-    width: 100%;
+	width: 100%;
 }
 
-/* Front Page */ 
-nav #tagList {
-    padding: 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
-    padding-bottom: 5vh;
+h2 {
+	font-family: 'Roboto Condensed', sans-serif;
 }
+
+p {
+	font-family: 'Roboto', sans-serif;
+}
+
+#tagList {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
+}
+
+/* Front Page */
+nav #tagList {
+	padding: 10px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	padding-bottom: 5vh;
+}
+
 #tagList label {
-    text-transform: capitalize;
+	text-transform: capitalize;
 }
 
 main {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
-    grid-gap: 10px;
-    max-width: 1200px;
-    margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	grid-gap: 10px;
+	max-width: 1200px;
+	margin: 0 auto;
 }
+
 .comicPanel {
-    margin: 0;
-    background-color: #D7C6AF; 
-    border-radius: 3px;
-    border: 1px solid grey;
-    animation: coverIn 0.6s ease-out both;
-} 
+	margin: 0;
+	background-color: #D7C6AF;
+	border-radius: 3px;
+	border: 1px solid grey;
+	animation: coverIn 0.6s ease-out both;
+}
+
 .rating {
-    text-align: center;
+	text-align: center;
 }
 
 @keyframes coverIn {
-    0% {
-        transform: translateX(10px);
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.3;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+	0% {
+		transform: translateX(10px);
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 0.3;
+	}
+
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
 }
 
 .comicPanel:hover {
-    /* outline: 4px solid #D7C6AF; */ 
-    cursor: pointer;
-    box-shadow: 10px 10px 5px grey;
+	/* outline: 4px solid #D7C6AF; */
+	cursor: pointer;
+	box-shadow: 10px 10px 5px grey;
 }
 
-/* Single View */ 
+/* Single View */
 
 .myComic {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-.myComic div {
-    padding: 20px;
-}
-.singleComic {
-    max-width: 1200px;
-    margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr;
 }
 
-/*  */ 
+.myComic div {
+	padding: 20px;
+}
+
+.singleComic {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+/*  */
 
 @media screen and (min-width:1000px) {
-    .myComic {
-        grid-template-columns: 1fr 2fr;
-    }
+	.myComic {
+		grid-template-columns: 1fr 2fr;
+	}
 }
