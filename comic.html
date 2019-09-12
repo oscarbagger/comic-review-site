@@ -13,6 +13,7 @@
                 <h2 class="title"></h2>
                 <img src="" alt="">
                 <p class="rating"></p>
+                <p class="author"></p>
                 <p class="review"></p>
                 <p class="pro"></p>
                 <p class="con"></p>
@@ -47,6 +48,7 @@
                         document.querySelector(".myComic img").alt=c.gsx$title.$t;
                         document.querySelector(".myComic .title").textContent=c.gsx$title.$t;
                         document.querySelector(".myComic .rating").textContent=c.gsx$rating.$t+"/10";
+                        document.querySelector(".myComic .author").textContent="Author: "+c.gsx$author.$t;
                         document.querySelector(".myComic .review").textContent=c.gsx$review.$t;
                         document.querySelector(".myComic .pro").textContent="Pros: "+c.gsx$pros.$t;
                         document.querySelector(".myComic .con").textContent="Cons: "+c.gsx$cons.$t;
