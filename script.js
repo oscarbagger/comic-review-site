@@ -22,10 +22,10 @@ async function GetJson()
     comicList=await jsonData.json();
     // run some start-up functions
     GetAllTags();
-    SortByName();
+    SortByName(true);
     ShowComics();
 }
-function SortByName()
+function SortByName(aToZ)
 {
     // sorts the array alphabetically by book title 
     comicList.feed.entry.sort(function(a, b){
@@ -33,8 +33,38 @@ function SortByName()
         var firstString=a.gsx$title.$t.toLowerCase().replace(/ /g,"");
         var secondString=b.gsx$title.$t.toLowerCase().replace(/ /g, "");
         // sort the strings
-        if(firstString < secondString) { return -1; }
-        if(firstString > secondString) { return 1; }
+        if (aToZ)
+        {
+            if(firstString <  secondString) { return -1; }
+            if(firstString > secondString) { return 1; }
+        }
+        else 
+        {
+            if(firstString >  secondString) { return -1; }
+            if(firstString < secondString) { return 1; }
+        }
+
+        return 0;
+    })
+}
+function SortByRating(highToLow)
+{
+    // sorts the array alphabetically by book title 
+    comicList.feed.entry.sort(function(a, b){
+        // first make the strings lowercase and remove all whitespace with replace
+        var firstString=parseInt(a.gsx$rating.$t.replace(/ /g,""),10);
+        var secondString=parseInt(b.gsx$rating.$t.replace(/ /g, ""),10);
+        // sort the strings
+        if (highToLow)
+            {
+                if(firstString > secondString) { return -1; }
+                if(firstString < secondString) { return 1; }
+            }
+        else {
+            if(firstString < secondString) { return -1; }
+            if(firstString > secondString) { return 1; }
+        }
+
         return 0;
     })
 }
@@ -46,11 +76,12 @@ function ShowComics()
     comicList.feed.entry.forEach(comic => {
         // modify string to be easier to search for
         var comicTitle=comic.gsx$title.$t.toLowerCase().trim();
+        var comicAuthor=comic.gsx$author.$t.toLowerCase().trim().replace(/, /g, "");
         // make a list of this comics tags
         var comicTags=GetComicsTagList(comic.gsx$tags.$t);
         // check if string includes what is in the searchbar, and in the filter
         console.log(allIndexesIncluded(comicTags,tagFilterList));
-        if (comicTitle.includes(searchInput) && allIndexesIncluded(comicTags,tagFilterList))
+        if (comicTitle.includes(searchInput) && allIndexesIncluded(comicTags,tagFilterList) || comicAuthor.includes(searchInput) && allIndexesIncluded(comicTags,tagFilterList) )
         {
             let clone=temp.cloneNode(true).content;
             clone.querySelector("img").src=comic.gsx$img.$t;
