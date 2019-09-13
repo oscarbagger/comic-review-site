@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Comic Review log</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700&display=swap" rel="stylesheet">
 	<!--headers-->
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> <!-- p and smaller text -->
 </head>
 
 <body>
+	<header>
+		<div id="logo1"></div>
+	</header>
 	<nav>
 		<input id="searchBar" type="text" placeholder=" Search by title or author">
 		<div id="tagList"></div>
@@ -24,7 +28,7 @@
 	<template class="comicTemp">
 		<article class="comicPanel">
 			<p class="rating"></p>
-            <img class="cover" src="" alt="">
+			<img class="cover" src="" alt="">
 		</article>
 	</template>
 	<template class="tagTemp">
@@ -34,4 +38,6 @@
 		</div>
 	</template>
 	<script src="script.js"></script>
-</body></html>
+</body>
+
+</html>

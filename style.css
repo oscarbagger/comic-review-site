@@ -1,6 +1,7 @@
 * {
-    margin: 0 auto;
+	margin: 0 auto;
 }
+
 body {
 	background-color: #E9EAE2;
 }
@@ -17,13 +18,24 @@ p {
 	font-family: 'Roboto', sans-serif;
 }
 
+header {
+	height: 20vh;
+	background-color: #d7c6af;
+	background-image: url(long%20book%20middle.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
 #tagList {
 	font-family: 'Roboto', sans-serif;
 	font-size: 1em;
 }
+
 .tagBox {
-    margin-left: 0;
+	margin-left: 0;
 }
+
 /* Front Page */
 nav #tagList {
 	padding: 10px;
@@ -46,26 +58,27 @@ main {
 
 .comicPanel {
 	margin-bottom: 20px;
-/*	background-color: #D7C6AF;*/
+	/*	background-color: #D7C6AF;*/
 	border-radius: 3px;
 	animation: coverIn 0.6s ease-out both;
 }
+
 .comicPanel .rating {
-    position: absolute;
-    bottom:0;
-    right: 0;
-    background-color: aliceblue;
-    border-top-left-radius: 8px;
-    border: 1px solid grey; 
-    padding: 2px 0px 0px 5px;
-    font-family: 'Roboto Condensed', sans-serif;
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: bold;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: aliceblue;
+	border-top-left-radius: 8px;
+	border: 1px solid grey;
+	padding: 2px 0px 0px 5px;
+	font-family: 'Roboto Condensed', sans-serif;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
 }
 
 .comicPanel .cover {
-    border: 1px solid grey;
+	border: 1px solid grey;
 }
 
 @keyframes coverIn {
