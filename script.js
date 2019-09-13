@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", Start);
 let comicList =[];
 const gridContent=document.querySelector("main");
 const navTagList=document.querySelector("#tagList");
-const searchBar=document.querySelector("#searchBar");
+const searchBar=document.querySelector("#searchBar input");
 let searchInput="";
 let tagList=[];
 let tagFilterList= [];
