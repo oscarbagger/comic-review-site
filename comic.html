@@ -134,6 +134,7 @@
         let comics = [];
         let urlParams = new URLSearchParams(window.location.search);
         let myComicID = urlParams.get("title");
+        let pageTtitle=document.querySelector("title");
         console.log(myComicID);
 
         async function HentJson() {
@@ -157,6 +158,7 @@
                     document.querySelector(".myComic .review").textContent = c.gsx$review.$t;
                     document.querySelector(".myComic .pro").textContent = "Pros: " + c.gsx$pros.$t;
                     document.querySelector(".myComic .con").textContent = "Cons: " + c.gsx$cons.$t;
+                    pageTtitle.textContent=c.gsx$title.$t;
                 }
             })
         }
