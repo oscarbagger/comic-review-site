@@ -1,88 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <style>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .myComic {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .myComic div {
+            padding: 20px;
+        }
+
+        .singleComic {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        /* salames */
+        .myComic img {
+            box-shadow: 5px 5px 5px grey;
+        }
+
+        .myComic .rating {
+            margin-top: 10px;
+
+            background-color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border: 1px solid grey;
+            padding: 3px 0px 3px 0px;
+            font-family: 'Roboto Condensed', sans-serif;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .myComic .author {
+
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background-color: white;
+            border: 1px solid grey;
+            padding: 5px 0px 5px 0px;
+            font-family: 'Roboto Condensed', sans-serif;
+            text-align: center;
+            font-size: 1em;
+        }
+
+        .myComic .rating,
+        .author {
+            box-shadow: 2px 5px 10px grey;
+        }
+
+        .singleComic .title {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .singleComic .review,
+        .pro,
+        .con,
+        .tag {
+            margin-bottom: 15px;
+            padding-left: 50px;
+            padding-right: 50px;
+            line-height: 20px;
+        }
+
+        .singleComic {
+            border:
+        }
+
+        /* salames */
+
+        @media screen and (min-width:980px) {
             .myComic {
-                display: grid;
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 2fr;
             }
 
-            .myComic div {
-                padding: 20px;
+            /* salames */
+            .singleComic .title {
+                font-size: 2.5rem;
+                margin-top: 25px;
+                margin-bottom: 50px;
             }
 
-            .singleComic {
-                max-width: 1200px;
-                margin: 0 auto;
+            .singleComic .review,
+            .pro,
+            .con,
+            .tag {
+                font-size: 1.6rem;
+                margin-bottom: 25px;
+                line-height: 30px;
             }
 
-            /*  */
+            /* salames */
 
-            @media screen and (min-width:1000px) {
-                .myComic {
-                    grid-template-columns: 1fr 2fr;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <button class="luk">Tilbage</button>
+    </nav>
+    <section class="singleComic">
+        <h2 class="title"></h2>
+        <article class="myComic">
+            <div>
+                <img src="" alt="">
+                <p class="rating"></p>
+                <p class="author"></p>
+            </div>
+            <div class="info">
+                <p class="review"></p>
+                <p class="pro"></p>
+                <p class="con"></p>
+                <a class="tag"></a>
+            </div>
+        </article>
+
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", HentJson);
+
+        let comics = [];
+        let urlParams = new URLSearchParams(window.location.search);
+        let myComicID = urlParams.get("title");
+        console.log(myComicID);
+
+        async function HentJson() {
+            const jsonData = await fetch("https://spreadsheets.google.com/feeds/list/1dg4qc964KOePUreY2UuREoemOWD7RGVbWd1le-WqfxI/od6/public/values?alt=json");
+            comics = await jsonData.json();
+            ShowComic()
+            document.querySelector(".luk").addEventListener("click", () => {
+                history.back();
+            })
+        }
+
+        function ShowComic() {
+            comics.feed.entry.forEach(c => {
+
+                if (c.gsx$title.$t.toLowerCase() == myComicID) {
+                    document.querySelector(".myComic img").src = c.gsx$img.$t;
+                    document.querySelector(".myComic img").alt = c.gsx$title.$t;
+                    document.querySelector(".title").textContent = c.gsx$title.$t;
+                    document.querySelector(".myComic .rating").textContent = c.gsx$rating.$t + "/10";
+                    document.querySelector(".myComic .author").textContent = "Author: " + c.gsx$author.$t;
+                    document.querySelector(".myComic .review").textContent = c.gsx$review.$t;
+                    document.querySelector(".myComic .pro").textContent = "Pros: " + c.gsx$pros.$t;
+                    document.querySelector(".myComic .con").textContent = "Cons: " + c.gsx$cons.$t;
                 }
-            }
-        </style>
-    </head>
-    <body>
-        <nav>
-            <button class="luk">Tilbage</button>
-        </nav>
-        <section class="singleComic">
-            <h2 class="title"></h2>
-            <article class="myComic">
-                <div>                
-                    <img src="" alt="">
-                    <p class="rating"></p>
-                    <p class="author"></p>
-                </div>
-                <div>
-                    <p class="review"></p>
-                    <p class="pro"></p>
-                    <p class="con"></p>
-                    <a class="tag"></a>
-                </div>
-            </article>
+            })
+        }
 
-        </section>
-        <script>
-            document.addEventListener("DOMContentLoaded", HentJson);
-            
-            let comics =[];
-            let urlParams=new URLSearchParams(window.location.search);
-            let myComicID=urlParams.get("title");
-            console.log(myComicID);
+    </script>
+</body>
 
-            async function HentJson() 
-            {
-                const jsonData = await fetch("https://spreadsheets.google.com/feeds/list/1dg4qc964KOePUreY2UuREoemOWD7RGVbWd1le-WqfxI/od6/public/values?alt=json");
-                comics=await jsonData.json();
-                ShowComic()
-                document.querySelector(".luk").addEventListener("click", () => {
-                    history.back();
-                })
-            }
-            function ShowComic() 
-            {
-                comics.feed.entry.forEach(c => {
-                    
-                    if (c.gsx$title.$t.toLowerCase()==myComicID)
-                    {
-                        document.querySelector(".myComic img").src=c.gsx$img.$t;
-                        document.querySelector(".myComic img").alt=c.gsx$title.$t;
-                        document.querySelector(".title").textContent=c.gsx$title.$t;
-                        document.querySelector(".myComic .rating").textContent=c.gsx$rating.$t+"/10";
-                        document.querySelector(".myComic .author").textContent="Author: "+c.gsx$author.$t;
-                        document.querySelector(".myComic .review").textContent=c.gsx$review.$t;
-                        document.querySelector(".myComic .pro").textContent="Pros: "+c.gsx$pros.$t;
-                        document.querySelector(".myComic .con").textContent="Cons: "+c.gsx$cons.$t;
-                    }
-                })
-            }
-        </script>
-    </body>
 </html>
