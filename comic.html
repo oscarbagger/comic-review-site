@@ -4,6 +4,29 @@
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <style>
+            .myComic {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            .myComic div {
+                padding: 20px;
+            }
+
+            .singleComic {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            /*  */
+
+            @media screen and (min-width:1000px) {
+                .myComic {
+                    grid-template-columns: 1fr 2fr;
+                }
+            }
+        </style>
     </head>
     <body>
         <nav>

@@ -80,7 +80,6 @@ function ShowComics()
         // make a list of this comics tags
         var comicTags=GetComicsTagList(comic.gsx$tags.$t);
         // check if string includes what is in the searchbar, and in the filter
-        console.log(allIndexesIncluded(comicTags,tagFilterList));
         if (comicTitle.includes(searchInput) && allIndexesIncluded(comicTags,tagFilterList) || comicAuthor.includes(searchInput) && allIndexesIncluded(comicTags,tagFilterList) )
         {
             let clone=temp.cloneNode(true).content;
