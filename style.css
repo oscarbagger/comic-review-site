@@ -58,13 +58,13 @@ nav #tagList {
 }
 
 #filterButton {
-	padding: 0px 15px 0px 15px;
+	padding: 15px 15px 0px 15px;
 }
 
 nav #searchBar {
 	width: inherit;
 	max-width: 90vw;
-	text-align: end;
+	text-align: center;
 	padding: 15px;
 }
 
@@ -73,7 +73,7 @@ main {
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	grid-gap: 15px;
 	max-width: 1200px;
-	margin: 0 auto;
+	margin: 0px auto; 
 }
 
 .comicPanel {
@@ -113,7 +113,6 @@ main {
 }
 
 footer {
-	z-index: 1;
 	background-color: #d7c6af;
 	width: auto;
 	text-align: center;
@@ -224,7 +223,13 @@ footer {
 /* salames */
 
 @media screen and (min-width:980px) {
-	.myComic {
+    nav #filterButton {
+        width: inherit;
+        text-align: center;
+        padding-top: 0px;
+    }
+    
+    .myComic {
 		grid-template-columns: 1fr 2fr;
 	}
 
