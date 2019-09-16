@@ -21,9 +21,12 @@ p {
 header {
 	height: 20vh;
 	background-color: #d7c6af;
-	background-image: url(long%20book%20middle.svg);
-	background-repeat: no-repeat;
-	background-position: center;
+}
+#logo1 {
+    background-image: url(long%20book%20middle.svg);
+    height: inherit;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .tagBox {
@@ -34,11 +37,12 @@ nav {
 	max-width: 1200px;
 }
 
+
 /* Front Page */
 nav #tagList {
 	padding: 10px;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
 	padding-bottom: 5vh;
 	font-family: 'Roboto', sans-serif;
 	font-size: 1em;
@@ -48,15 +52,21 @@ nav #tagList {
 	text-transform: capitalize;
 }
 
-nav #searchBar {
-	padding-left: 10px;
+#filterButton {
+    padding: 0px 15px 0px 15px;
+}
 
+nav #searchBar {
+    width: inherit;
+    max-width: 90vw;
+    text-align: end;
+    padding: 15px;
 }
 
 main {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-	grid-gap: 10px;
+	grid-gap: 15px;
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -185,6 +195,14 @@ main {
 	padding-left: 50px;
 	padding-right: 50px;
 	line-height: 20px;
+}
+
+.hidden {
+    display: none;
+    transform: scale(0);
+    transform: translateX(-100%);
+    opacity: 0;
+    height: 0;
 }
 
 /* salames */

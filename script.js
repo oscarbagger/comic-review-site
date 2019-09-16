@@ -5,6 +5,8 @@ let comicList =[];
 const gridContent=document.querySelector("main");
 const navTagList=document.querySelector("#tagList");
 const searchBar=document.querySelector("#searchBar input");
+const filterButton=document.querySelector("#filterButton input");
+let filterOpen=false;
 let searchInput="";
 let tagList=[];
 let tagFilterList= [];
@@ -13,6 +15,19 @@ function Start()
 {
     GetJson();
     searchBar.addEventListener("input", ShowComics);
+    filterButton.addEventListener("click", ToggleFilters => {
+        if (filterOpen)
+            {
+                filterButton.value="Filters +"
+                filterOpen=false;
+            } else 
+            {
+                filterButton.value="Filters -"
+                filterOpen=true;
+            }
+        navTagList.classList.toggle("hidden");
+        
+    });
 }
 
 async function GetJson() 
@@ -25,6 +40,7 @@ async function GetJson()
     SortByName(true);
     ShowComics();
 }
+
 function SortByName(aToZ)
 {
     // sorts the array alphabetically by book title 

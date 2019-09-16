@@ -15,15 +15,15 @@
 
 <body>
 	<header>
-		<div id="logo1"></div>
+        <div id="logo1" style="cursor: pointer;" onclick="window.location='index.html';"></div>
 	</header>
 	<nav>
-		<div id="searchBar"><input type="text" placeholder=" Search by title or author"></div>
-		<div id="tagList"></div>
+		<div id="searchBar"><input type="text" size="48" placeholder=" Search by title or author"></div>
+        <div id="filterButton"><input  type="button" value="Filters +"></div>
+        <div id="tagList" class="hidden"></div>
 	</nav>
 
 	<main>
-		<img id="testImg" src="#" alt="#">
 	</main>
 	<div id="overlay"></div>
 	<template class="comicTemp">
