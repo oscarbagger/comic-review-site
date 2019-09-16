@@ -18,6 +18,10 @@ p {
 	font-family: 'Roboto', sans-serif;
 }
 
+.info p {
+	font-size: 1em;
+}
+
 header {
 	height: 20vh;
 	background-color: #d7c6af;
@@ -114,7 +118,7 @@ footer {
 	width: auto;
 	text-align: center;
 	color: black;
-	padding-top: 0.5em;
+	padding: 1em;
 	font-size: 0.8em;
 	font-family: 'Roboto', sans-serif;
 }
@@ -235,7 +239,6 @@ footer {
 	.pro,
 	.con,
 	.tag {
-		font-size: 1.6rem;
 		margin-bottom: 25px;
 		line-height: 30px;
 	}
