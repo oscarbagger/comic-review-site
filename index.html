@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Comic Review log</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+    <!--fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700&display=swap" rel="stylesheet">
 	<!--headers-->
@@ -15,23 +16,30 @@
 
 <body>
 	<header>
+        <!-- logo -->
 		<div id="logo1" style="cursor: pointer;" onclick="window.location='index.html';"></div>
 	</header>
 	<nav>
+        <!-- søgefeltet -->
 		<div id="searchBar"><input type="text" size="48" placeholder=" Search by title or author"></div>
+        <!--knap til at åbne og lukke listen med filtre -->
         <div id="filterButton"><input type="button" value="Filters +"></div>
+        <!--listen med filtre -->
 		<div id="tagList" class="hidden"></div>
 	</nav>
 
 	<main>
 	</main>
+    <!-- gradient i bunden af siden -->
 	<div id="overlay"></div>
+    <!--template for making comics in the grid -->
 	<template class="comicTemp">
 		<article class="comicPanel">
 			<p class="rating"></p>
 			<img class="cover" src="#" alt="#">
 		</article>
 	</template>
+	<!--template for making genre checkboxes -->
 	<template class="tagTemp">
 		<div class="tagBox">
 			<input type="checkbox">
