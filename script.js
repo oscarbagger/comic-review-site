@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", Start);
+document.addEventListener("DOMContentLoaded", GetJson);
 
 
 let comicList =[];
@@ -15,26 +15,6 @@ let tagList=[];
 // array of tags/genres currently active as filters.
 let tagFilterList= [];
 
-function Start()
-{
-    GetJson();
-    // every time you write in searchbar, run ShowComics()
-    searchBar.addEventListener("input", ShowComics);
-    // toggle the filterlist open/closed.
-    filterButton.addEventListener("click", ToggleFilters => {
-        if (filterOpen)
-            {
-                filterButton.value="Filters +"
-                filterOpen=false;
-            } else 
-            {
-                filterButton.value="Filters -"
-                filterOpen=true;
-            }
-        navTagList.classList.toggle("hidden");
-    });
-}
-
 async function GetJson() 
 {   
     // fetch json data from spreadsheet
@@ -44,6 +24,26 @@ async function GetJson()
     GetAllTags();
     SortByName(true);
     ShowComics();
+    EventListenerAdd();
+}
+
+function EventListenerAdd()
+{
+    // every time you write in searchbar, run ShowComics()
+    searchBar.addEventListener("input", ShowComics);
+    // toggle the filterlist open/closed.
+    filterButton.addEventListener("click", ToggleFilters => {
+        if (filterOpen)
+        {
+            filterButton.value="Filters +"
+            filterOpen=false;
+        } else 
+        {
+            filterButton.value="Filters -"
+            filterOpen=true;
+        }
+        navTagList.classList.toggle("hidden");
+    });
 }
 
 function SortByName(aToZ)
@@ -100,7 +100,7 @@ function ShowComics()
         var comicTitle=comic.gsx$title.$t.toLowerCase().trim();
         var comicAuthor=comic.gsx$author.$t.toLowerCase().trim().replace(/, /g, "");
         // make a list of this comics tags
-        var comicTags=GetComicsTagList(comic.gsx$tags.$t);
+        var comicTags=GetThisComicsTags(comic.gsx$tags.$t);
         // check if string includes what is in the searchbar, and in the filter
         if (comicTitle.includes(searchInput) && allIndexesIncluded(comicTags,tagFilterList) || comicAuthor.includes(searchInput) && allIndexesIncluded(comicTags,tagFilterList) )
         {
@@ -140,7 +140,7 @@ function allIndexesIncluded(arr,includedIn)
         else {return false;}
 }
 // get all tags for a single comic
-function GetComicsTagList(str)
+function GetThisComicsTags(str)
 {
     // make the string lowercase and remove whitespace
     var tagString=str.toLowerCase().replace(/ /g, "");
