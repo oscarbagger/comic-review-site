@@ -212,12 +212,14 @@ footer {
 	line-height: 20px;
 }
 
-.hidden {
-	display: none;
-	transform: scale(0);
-	transform: translateX(-100%);
-	opacity: 0;
-	height: 0;
+.luk {
+    padding: 15px;
+    width: 15vw;
+    position: absolute;
+}
+
+.luk:hover {
+    cursor: pointer;
 }
 
 /* salames */
@@ -228,6 +230,9 @@ footer {
         text-align: center;
         padding-top: 0px;
     }
+    .luk {
+        width: 5vw;
+    }
     
     .myComic {
 		grid-template-columns: 1fr 2fr;
@@ -237,7 +242,7 @@ footer {
 	.singleComic .title {
 		font-size: 2.5rem;
 		margin-top: 25px;
-		margin-bottom: 50px;
+		margin-bottom: 25px;
 	}
 
 	.singleComic .review,
@@ -248,6 +253,15 @@ footer {
 		line-height: 30px;
 	}
 
+
 	/* salames */
 
+}
+
+.hidden {
+    display: none;
+    transform: scale(0);
+    transform: translateX(-100%);
+    opacity: 0;
+    height: 0;
 }
