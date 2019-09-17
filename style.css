@@ -1,4 +1,5 @@
 * {
+	/* defines a margin on the site itself */
 	margin: 0 auto;
 }
 
@@ -73,7 +74,7 @@ main {
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	grid-gap: 15px;
 	max-width: 1200px;
-	margin: 0px auto; 
+	margin: 0px auto;
 }
 
 .comicPanel {
@@ -122,6 +123,8 @@ footer {
 	font-family: 'Roboto', sans-serif;
 }
 
+/* This is the animation for the fade-in on the covers when refreshing
+site */
 @keyframes coverIn {
 	0% {
 		transform: translateX(10px);
@@ -138,6 +141,8 @@ footer {
 	}
 }
 
+/* This affects the shading appearing behind the covers when
+hovered over by mouse */
 .comicPanel .cover:hover {
 	cursor: pointer;
 	box-shadow: 5px 5px 1px 0px grey;
@@ -159,10 +164,9 @@ footer {
 	margin: 0 auto;
 }
 
-
-/* salames */
 .myComic img {
 	box-shadow: 5px 5px 5px grey;
+	text-align: center;
 }
 
 .myComic .rating {
@@ -212,33 +216,36 @@ footer {
 	line-height: 20px;
 }
 
-.luk {
-    padding: 15px;
-    width: 15vw;
-    position: absolute;
+img.luk {
+	padding: 15px;
+	width: 20vw;
+	position: absolute;
+	cursor: pointer;
 }
 
 .luk:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
-/* salames */
+@media only screen and (min-width: 450px) {
 
-@media screen and (min-width:980px) {
-    nav #filterButton {
-        width: inherit;
-        text-align: center;
-        padding-top: 0px;
-    }
-    .luk {
-        width: 5vw;
-    }
-    
-    .myComic {
-		grid-template-columns: 1fr 2fr;
+	img.luk {
+		width: 15vw;
 	}
 
-	/* salames */
+}
+
+@media only screen and (min-width: 650px) {
+
+	img.luk {
+		width: 10vw;
+	}
+
+	.myComic {
+
+		grid-template-columns: 1fr 1fr;
+	}
+
 	.singleComic .title {
 		font-size: 2.5rem;
 		margin-top: 25px;
@@ -253,15 +260,53 @@ footer {
 		line-height: 30px;
 	}
 
+}
 
-	/* salames */
+@media only screen and (min-width: 980px) {
+	nav #filterButton {
+		width: inherit;
+		text-align: center;
+		padding-top: 0px;
+	}
+
+	img.luk {
+		width: 8vw;
+	}
+
+	.myComic {
+
+		grid-template-columns: 1fr 2fr;
+	}
+
+	.singleComic .title {
+		font-size: 2.5rem;
+		margin-top: 25px;
+		margin-bottom: 25px;
+	}
+
+	.singleComic .review,
+	.pro,
+	.con,
+	.tag {
+		margin-bottom: 25px;
+		line-height: 30px;
+	}
+
+	@media only screen and (min-width: 1200px) {
+
+		img.luk {
+			width: 4vw;
+		}
+
+	}
 
 }
 
+/* filter list is not supposed to be shown when collapsed */
 .hidden {
-    display: none;
-    transform: scale(0);
-    transform: translateX(-100%);
-    opacity: 0;
-    height: 0;
+	display: none;
+	transform: scale(0);
+	transform: translateX(-100%);
+	opacity: 0;
+	height: 0;
 }
